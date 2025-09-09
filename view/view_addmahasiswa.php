@@ -25,7 +25,7 @@
       <div class="card-body">
 
         <h1>New Mahasiswa</h1>
-        <form method="POST" action="controller_mahasiswa.php">
+        <form method="POST" action="../controller/controller_mahasiswa.php">
           <div class="form-row">
           </div>
           <div class="form-group">

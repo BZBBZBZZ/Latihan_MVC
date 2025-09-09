@@ -2,12 +2,15 @@
 include("../model/model_mahasiswa.php");
 session_start();
 
-
+// Inisialisasi session array di awal
+if (!isset($_SESSION['mahasiswalist'])) {
+    $_SESSION['mahasiswalist'] = array();
+}
 
 function createMahasiswa()
 {
     $mahasiswa = new model_mahasiswa();
-    $mahasiswa->name = $_POST['inputNama'];
+    $mahasiswa->name = $_POST['inputName'];
     $mahasiswa->age = $_POST['inputUsia'];
     $mahasiswa->major = $_POST['inputJurusan'];
     array_push($_SESSION['mahasiswalist'], $mahasiswa);
@@ -29,6 +32,8 @@ function getAllMahasiswa()
 function deleteMahasiswa($mahasiswaIndex)
 {
     unset($_SESSION['mahasiswalist'][$mahasiswaIndex]);
+    // Re-index array setelah delete
+    $_SESSION['mahasiswalist'] = array_values($_SESSION['mahasiswalist']);
 }
 
 function getMahasiswaWithID($mahasiswaID)
@@ -36,21 +41,21 @@ function getMahasiswaWithID($mahasiswaID)
     return $_SESSION['mahasiswalist'][$mahasiswaID];
 }
 
-if (isset($_POST['button_register'])) {
+if (isset($_POST['buttonadd'])) {
     createMahasiswa();
-    header("Location:view_mahasiswa.php");
-}
-
-if (!isset($_SESSION['mahasiswalist'])) {
-    $_SESSION['mahasiswalist'] = array();
+    header("Location: ../view/view_mahasiswa.php");
+    exit();
 }
 
 if (isset($_GET['deleteID'])) {
     deleteMahasiswa($_GET['deleteID']);
-    header("Location:view_mahasiswa.php");
+    header("Location: ../view/view_mahasiswa.php");
+    exit();
 }
 
 if (isset($_POST['button_update'])) {
     updateMahasiswa($_POST['input_id']);
-    header("Location:view_mahasiswa.php"); 
+    header("Location: ../view/view_mahasiswa.php"); 
+    exit();
 }
+?>
