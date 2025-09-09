@@ -1,5 +1,5 @@
 <?php
-include("model_member.php");
+include("../model/model_mahasiswa.php");
 session_start();
 
 
@@ -7,18 +7,18 @@ session_start();
 function createMahasiswa()
 {
     $mahasiswa = new model_mahasiswa();
-    $mahasiswa->name = $_POST['inputName'];
-    $mahasiswa->age = $_POST['inputAge'];
-    $mahasiswa->major = $_POST['inputMajor'];
+    $mahasiswa->name = $_POST['inputNama'];
+    $mahasiswa->age = $_POST['inputUsia'];
+    $mahasiswa->major = $_POST['inputJurusan'];
     array_push($_SESSION['mahasiswalist'], $mahasiswa);
 }
 
 function updateMahasiswa($mahasiswaID)
 {
     $mahasiswa = $_SESSION['mahasiswalist'][$mahasiswaID]; // ambil data dengan index tertentu
-    $mahasiswa->name = $_POST['inputName'];
-    $mahasiswa->age = $_POST['inputAge'];
-    $mahasiswa->major = $_POST['inputMajor'];
+    $mahasiswa->name = $_POST['inputNama'];
+    $mahasiswa->age = $_POST['inputUsia'];
+    $mahasiswa->major = $_POST['inputJurusan'];
 }
 
 function getAllMahasiswa()
