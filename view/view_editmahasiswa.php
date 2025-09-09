@@ -36,8 +36,8 @@ require ("../controller/controller_mahasiswa.php");
           <div class="form-row">
           </div>
           <div class="form-group">
-            <label for="inputName">Nama</label>
-            <input type="text" class="form-control" name="inputName" value="<?=$mahasiswa->name?>">
+            <label for="inputNama">Nama</label>
+            <input type="text" class="form-control" name="inputNama" value="<?=$mahasiswa->name?>">
           </div>
           <div class="form-group">
             <label for="inputUsia">Usia</label>
