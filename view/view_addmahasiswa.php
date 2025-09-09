@@ -23,23 +23,24 @@
         </ul>
       </div>
       <div class="card-body">
+
         <h1>New Mahasiswa</h1>
-        <form>
+        <form method="POST" action="controller_mahasiswa.php">
           <div class="form-row">
           </div>
           <div class="form-group">
-            <label for="inputNama">Nama</label>
-            <input type="text" class="form-control" id="inputNama" placeholder="Masukkan Nama">
+            <label for="inputName">Nama</label>
+            <input type="text" class="form-control" name="inputName" placeholder="Masukkan Nama">
           </div>
           <div class="form-group">
             <label for="inputUsia">Usia</label>
-            <input type="text" class="form-control" id="inputUsia" placeholder="Masukkan Usia">
+            <input type="text" class="form-control" name="inputUsia" placeholder="Masukkan Usia">
           </div>
           <div class="form-group">
             <label for="inputJurusan">Jurusan</label>
-            <input type="text" class="form-control" id="inputJurusan" placeholder="Masukkan Jurusan">
+            <input type="text" class="form-control" name="inputJurusan" placeholder="Masukkan Jurusan">
           </div>
-          <button type="submit" class="btn btn-primary">Add</button>
+          <button name="buttonadd" type="submit" class="btn btn-primary">Add</button>
         </form>
       </div>
 </body>
