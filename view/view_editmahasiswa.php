@@ -1,7 +1,8 @@
 <?php
 require ("../controller/controller_mahasiswa.php");
  if (isset($_GET["editID"]))
-  $mahasiswa = getMahasiswaWithID($_GET["editID"]);
+  $mahasiswa_id = $_GET["editID"];
+  $mahasiswa = getMahasiswaWithID($mahasiswa_id);
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +47,7 @@ require ("../controller/controller_mahasiswa.php");
             <label for="inputJurusan">Jurusan</label>
             <input type="text" class="form-control" name="inputJurusan" value="<?=$mahasiswa->major?>">
           </div>
+          <input type="hidden" name="input_id" value="<?=$mahasiswa_id?>">
           <button name="buttonedit" type="submit" class="btn btn-primary">Edit</button>
         </form>
       </div>
