@@ -29,7 +29,7 @@
           <div class="form-row">
           </div>
           <div class="form-group">
-            <label for="inputName">Nama</label>
+            <label for="inputNama">Nama</label>
             <input type="text" class="form-control" name="inputName" placeholder="Masukkan Nama">
           </div>
           <div class="form-group">
