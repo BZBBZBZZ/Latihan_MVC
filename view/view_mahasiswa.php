@@ -53,8 +53,9 @@
                 <td><?php echo $member->age; ?></td>
                 <td><?php echo $member->major; ?></td>
                 <td>
-                  <a href="../view/view_editmahasiswa.php?id=<?= $index ?>" class="btn btn-warning">Edit</a>
+                  <a href="../view/view_editmahasiswa.php?editID=<?= $index ?>" class="btn btn-warning">Edit</a>
                   <a href="../controller/controller_mahasiswa.php?deleteID=<?= $index ?>" class="btn btn-danger">Delete</a>
+                </td>
               </tr>
 
               <?php
