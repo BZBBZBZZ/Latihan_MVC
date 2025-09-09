@@ -10,8 +10,23 @@
 </head>
 
 <body>
+    
+    <div class="container p-3">
+      <div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="view_mahasiswa.php">Mahasiswa</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="view_addmahasiswa.php">New Mahasiswa</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body"></div>
     <div class="container p-3">
         <h1>Mahasiswa</h1>
+        
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -34,6 +49,7 @@
                 </tr>
             </tbody>
         </table>
+    </div>
     </div>
 </body>
 

@@ -11,7 +11,39 @@
 
 <body>
     <div class="container p-3">
-        <h1>Mahasiswa</h1>
+      <div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="view_mahasiswa.php">Mahasiswa</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="view_addmahasiswa.php">New Mahasiswa</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <h1>New Mahasiswa</h1>
+        <form>
+  <div class="form-row">
+  </div>
+  <div class="form-group">
+    <label for="inputNama">Nama</label>
+    <input type="text" class="form-control" id="inputNama" placeholder="Masukkan Nama">
+  </div>
+  <div class="form-group">
+    <label for="inputUsia">Usia</label>
+    <input type="text" class="form-control" id="inputUsia" placeholder="Masukkan Usia">
+  </div>
+    <div class="form-group">
+      <label for="inputJurusan">Jurusan</label>
+      <input type="text" class="form-control" id="inputJurusan" placeholder="Masukkan Jurusan">
+    </div>
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
+  </div>
+</div>
+        
     </div>
 </body>
 
