@@ -1,3 +1,5 @@
+<?php require("../controller/controller_mahasiswa.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,15 +40,26 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>
-                <button class="btn btn-primary">Edit</button>
-                <button class="btn btn-danger">Delete</button>
-            </tr>
+            <?php
+            $counter = 0;
+            $allmembers = getAllMahasiswa();
+            foreach ($allmembers as $index => $member) {
+              $counter++;
+              ?>
+
+              <tr>
+                <th scope="row"><?= $counter ?></th>
+                <td><?php echo $member->name; ?></td>
+                <td><?php echo $member->age; ?></td>
+                <td><?php echo $member->major; ?></td>
+                <td>
+                  <a href="../view/view_editmahasiswa.php?id=<?= $index ?>" class="btn btn-warning">Edit</a>
+                  <a href="../controller/controller_mahasiswa.php?deleteID=<?= $index ?>" class="btn btn-danger">Delete</a>
+              </tr>
+
+              <?php
+            }
+            ?>
           </tbody>
         </table>
       </div>

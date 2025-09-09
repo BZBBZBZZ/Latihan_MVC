@@ -53,7 +53,7 @@ if (isset($_GET['deleteID'])) {
     exit();
 }
 
-if (isset($_POST['button_update'])) {
+if (isset($_POST['buttonedit'])) {
     updateMahasiswa($_POST['input_id']);
     header("Location: ../view/view_mahasiswa.php"); 
     exit();
