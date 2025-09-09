@@ -1,3 +1,11 @@
+<?php
+require ("../controller/controller_games.php");
+if (isset($_GET["editID"])) {
+  $games_id = $_GET["editID"];
+  $games = getGamesWithID($games_id);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,23 +38,24 @@
       </div>
       <div class="card-body">
 
-        <h1>New Mahasiswa</h1>
-        <form method="POST" action="../controller/controller_mahasiswa.php">
+        <h1>Edit Games</h1>
+        <form method="POST" action="../controller/controller_games.php">
           <div class="form-row">
           </div>
           <div class="form-group">
             <label for="inputNama">Nama</label>
-            <input type="text" class="form-control" name="inputNama" placeholder="Masukkan Nama">
+            <input type="text" class="form-control" name="inputNama" value="<?=$games->name?>">
           </div>
           <div class="form-group">
-            <label for="inputUsia">Usia</label>
-            <input type="text" class="form-control" name="inputUsia" placeholder="Masukkan Usia">
+            <label for="inputPublisher">Publisher</label>
+            <input type="text" class="form-control" name="inputPublisher" value="<?=$games->publisher?>">
           </div>
           <div class="form-group">
-            <label for="inputJurusan">Jurusan</label>
-            <input type="text" class="form-control" name="inputJurusan" placeholder="Masukkan Jurusan">
+            <label for="inputGenre">Genre</label>
+            <input type="text" class="form-control" name="inputGenre" value="<?=$games->genre?>">
           </div>
-          <button name="buttonadd" type="submit" class="btn btn-primary">Add</button>
+          <input type="hidden" name="input_id" value="<?=$games_id?>">
+          <button name="buttonedit" type="submit" class="btn btn-primary">Edit</button>
         </form>
       </div>
 </body>

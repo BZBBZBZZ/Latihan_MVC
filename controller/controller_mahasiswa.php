@@ -10,7 +10,7 @@ if (!isset($_SESSION['mahasiswalist'])) {
 function createMahasiswa()
 {
     $mahasiswa = new model_mahasiswa();
-    $mahasiswa->name = $_POST['inputName'];
+    $mahasiswa->name = $_POST['inputNama'];
     $mahasiswa->age = $_POST['inputUsia'];
     $mahasiswa->major = $_POST['inputJurusan'];
     array_push($_SESSION['mahasiswalist'], $mahasiswa);

@@ -1,4 +1,4 @@
-<?php require("../controller/controller_mahasiswa.php"); ?>
+<?php require("../controller/controller_games.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,38 +33,38 @@
       </div>
       <div class="card-body"></div>
       <div class="container p-3">
-        <h1>Mahasiswa</h1>
+        <h1>Games</h1>
 
         <table class="table">
           <thead class="thead-dark">
             <tr>
               <th scope="col">No</th>
               <th scope="col">Nama</th>
-              <th scope="col">Usia</th>
-              <th scope="col">Jurusan</th>
+              <th scope="col">Publisher</th>
+              <th scope="col">Genre</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
             <?php
             $counter = 0;
-            $allmembers = getAllMahasiswa();
-            foreach ($allmembers as $index => $member) {
+            $allgames = getAllGames();
+            foreach ($allgames as $index => $game) {
               $counter++;
-              ?>
+            ?>
 
               <tr>
                 <th scope="row"><?= $counter ?></th>
-                <td><?php echo $member->name; ?></td>
-                <td><?php echo $member->age; ?></td>
-                <td><?php echo $member->major; ?></td>
+                <td><?php echo $game->name; ?></td>
+                <td><?php echo $game->publisher; ?></td>
+                <td><?php echo $game->genre; ?></td>
                 <td>
-                  <a href="../view/view_editmahasiswa.php?editID=<?= $index ?>" class="btn btn-warning">Edit</a>
-                  <a href="../controller/controller_mahasiswa.php?deleteID=<?= $index ?>" class="btn btn-danger">Delete</a>
+                  <a href="../view/view_editgames.php?editID=<?= $index ?>" class="btn btn-warning">Edit</a>
+                  <a href="../controller/controller_games.php?deleteID=<?= $index ?>" class="btn btn-danger">Delete</a>
                 </td>
               </tr>
 
-              <?php
+            <?php
             }
             ?>
           </tbody>

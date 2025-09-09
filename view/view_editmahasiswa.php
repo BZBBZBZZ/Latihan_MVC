@@ -27,6 +27,12 @@ require ("../controller/controller_mahasiswa.php");
           <li class="nav-item">
             <a class="nav-link active" href="view_addmahasiswa.php">New Mahasiswa</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="view_games.php">Games</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="view_addgames.php">New Games</a>
+          </li>
         </ul>
       </div>
       <div class="card-body">

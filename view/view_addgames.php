@@ -29,26 +29,25 @@
         </ul>
       </div>
       <div class="card-body">
-
-        <h1>New Mahasiswa</h1>
-        <form method="POST" action="../controller/controller_mahasiswa.php">
-          <div class="form-row">
-          </div>
+        <h1>New Games</h1>
+        <form method="POST" action="../controller/controller_games.php">
           <div class="form-group">
             <label for="inputNama">Nama</label>
             <input type="text" class="form-control" name="inputNama" placeholder="Masukkan Nama">
           </div>
           <div class="form-group">
-            <label for="inputUsia">Usia</label>
-            <input type="text" class="form-control" name="inputUsia" placeholder="Masukkan Usia">
+            <label for="inputPublisher">Publisher</label>
+            <input type="text" class="form-control" name="inputPublisher" placeholder="Masukkan Publisher">
           </div>
           <div class="form-group">
-            <label for="inputJurusan">Jurusan</label>
-            <input type="text" class="form-control" name="inputJurusan" placeholder="Masukkan Jurusan">
+            <label for="inputGenre">Genre</label>
+            <input type="text" class="form-control" name="inputGenre" placeholder="Masukkan Genre">
           </div>
           <button name="buttonadd" type="submit" class="btn btn-primary">Add</button>
         </form>
       </div>
+    </div>
+  </div>
 </body>
 
 </html>
