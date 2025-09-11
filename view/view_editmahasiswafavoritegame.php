@@ -1,8 +1,9 @@
 <?php
 require("../controller/controller_mahasiswa.php");
-if (isset($_GET["editID"]))
+if (isset($_GET["editID"])) {
   $mahasiswa_id = $_GET["editID"];
-$mahasiswa = getMahasiswaWithID($mahasiswa_id);
+  $mahasiswa = getMahasiswaFavoriteGameWithID($mahasiswa_id);
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,26 +44,52 @@ $mahasiswa = getMahasiswaWithID($mahasiswa_id);
       </div>
       <div class="card-body">
 
-        <h1>Edit Mahasiswa</h1>
+        <h1>Edit Mahasiswa Favorite Game</h1>
+
+        <?php if (isset($_SESSION['error'])): ?>
+          <div class="alert alert-danger">
+            <?= $_SESSION['error'] ?>
+          </div>
+          <?php unset($_SESSION['error']); ?>
+        <?php endif; ?>
+
         <form method="POST" action="../controller/controller_mahasiswa.php">
-          <div class="form-row">
+          <div class="form-group">
+            <label for="inputNama">Nama Mahasiswa</label>
+            <select class="form-control" name="inputNama" required>
+              <option value="">Pilih Mahasiswa</option>
+              <?php
+              $allmahasiswa = getAllMahasiswaForDropdown();
+              foreach ($allmahasiswa as $mhs) {
+                $selected = ($mhs->name == $mahasiswa->name) ? 'selected' : '';
+              ?>
+                <option value="<?= $mhs->name ?>" <?= $selected ?>><?= $mhs->name ?></option>
+              <?php
+              }
+              ?>
+            </select>
           </div>
           <div class="form-group">
-            <label for="inputNama">Nama</label>
-            <input type="text" class="form-control" name="inputNama" value="<?= $mahasiswa->name ?>">
-          </div>
-          <div class="form-group">
-            <label for="inputUsia">Usia</label>
-            <input type="text" class="form-control" name="inputUsia" value="<?= $mahasiswa->age ?>">
-          </div>
-          <div class="form-group">
-            <label for="inputJurusan">Jurusan</label>
-            <input type="text" class="form-control" name="inputJurusan" value="<?= $mahasiswa->major ?>">
+            <label for="inputGame">Game Favorit</label>
+            <select class="form-control" name="inputGame" required>
+              <option value="">Pilih Game</option>
+              <?php
+              $allgames = getAllGames();
+              foreach ($allgames as $game) {
+                $selected = ($game->name == $mahasiswa->game_name) ? 'selected' : '';
+              ?>
+                <option value="<?= $game->name ?>" <?= $selected ?>><?= $game->name ?></option>
+              <?php
+              }
+              ?>
+            </select>
           </div>
           <input type="hidden" name="input_id" value="<?= $mahasiswa_id ?>">
-          <button name="buttonedit" type="submit" class="btn btn-primary">Edit</button>
+          <button name="buttoneditfavgame" type="submit" class="btn btn-primary">Edit</button>
         </form>
       </div>
+    </div>
+  </div>
 </body>
 
 </html>

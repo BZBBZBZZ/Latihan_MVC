@@ -29,6 +29,12 @@
           <li class="nav-item">
             <a class="nav-link active" href="view_addgames.php">New Games</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="view_mahasiswafavoritegame.php">Mahasiswa Favorite Game</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="view_addmahasiswafavoritegame.php">New Mahasiswa Favorite Game</a>
+          </li>
         </ul>
       </div>
       <div class="card-body"></div>
@@ -51,7 +57,7 @@
             $allmembers = getAllMahasiswa();
             foreach ($allmembers as $index => $member) {
               $counter++;
-              ?>
+            ?>
 
               <tr>
                 <th scope="row"><?= $counter ?></th>
@@ -64,7 +70,7 @@
                 </td>
               </tr>
 
-              <?php
+            <?php
             }
             ?>
           </tbody>

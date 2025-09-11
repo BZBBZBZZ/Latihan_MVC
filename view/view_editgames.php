@@ -1,5 +1,5 @@
 <?php
-require ("../controller/controller_games.php");
+require("../controller/controller_games.php");
 if (isset($_GET["editID"])) {
   $games_id = $_GET["editID"];
   $games = getGamesWithID($games_id);
@@ -34,6 +34,12 @@ if (isset($_GET["editID"])) {
           <li class="nav-item">
             <a class="nav-link active" href="view_addgames.php">New Games</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="view_mahasiswafavoritegame.php">Mahasiswa Favorite Game</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="view_addmahasiswafavoritegame.php">New Mahasiswa Favorite Game</a>
+          </li>
         </ul>
       </div>
       <div class="card-body">
@@ -44,17 +50,17 @@ if (isset($_GET["editID"])) {
           </div>
           <div class="form-group">
             <label for="inputNama">Nama</label>
-            <input type="text" class="form-control" name="inputNama" value="<?=$games->name?>">
+            <input type="text" class="form-control" name="inputNama" value="<?= $games->name ?>">
           </div>
           <div class="form-group">
             <label for="inputPublisher">Publisher</label>
-            <input type="text" class="form-control" name="inputPublisher" value="<?=$games->publisher?>">
+            <input type="text" class="form-control" name="inputPublisher" value="<?= $games->publisher ?>">
           </div>
           <div class="form-group">
             <label for="inputGenre">Genre</label>
-            <input type="text" class="form-control" name="inputGenre" value="<?=$games->genre?>">
+            <input type="text" class="form-control" name="inputGenre" value="<?= $games->genre ?>">
           </div>
-          <input type="hidden" name="input_id" value="<?=$games_id?>">
+          <input type="hidden" name="input_id" value="<?= $games_id ?>">
           <button name="buttonedit" type="submit" class="btn btn-primary">Edit</button>
         </form>
       </div>

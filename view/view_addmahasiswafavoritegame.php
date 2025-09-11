@@ -1,3 +1,5 @@
+<?php require("../controller/controller_mahasiswa.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,21 +37,46 @@
         </ul>
       </div>
       <div class="card-body">
-        <h1>New Games</h1>
-        <form method="POST" action="../controller/controller_games.php">
+
+        <h1>New Mahasiswa Favorite Game</h1>
+
+        <?php if (isset($_SESSION['error'])): ?>
+          <div class="alert alert-danger">
+            <?= $_SESSION['error'] ?>
+          </div>
+          <?php unset($_SESSION['error']); ?>
+        <?php endif; ?>
+
+        <form method="POST" action="../controller/controller_mahasiswa.php">
           <div class="form-group">
-            <label for="inputNama">Nama</label>
-            <input type="text" class="form-control" name="inputNama" placeholder="Masukkan Nama">
+            <label for="inputNama">Nama Mahasiswa</label>
+            <select class="form-control" name="inputNama" required>
+              <option value="">Pilih Mahasiswa</option>
+              <?php
+              $allmahasiswa = getAllMahasiswaForDropdown();
+              foreach ($allmahasiswa as $mahasiswa) {
+              ?>
+                <option value="<?= $mahasiswa->name ?>"><?= $mahasiswa->name ?></option>
+              <?php
+              }
+              ?>
+            </select>
           </div>
           <div class="form-group">
-            <label for="inputPublisher">Publisher</label>
-            <input type="text" class="form-control" name="inputPublisher" placeholder="Masukkan Publisher">
+            <label for="inputGame">Game Favorit</label>
+            <select class="form-control" name="inputGame" required>
+              <option value="">Pilih Game</option>
+              <?php
+              $allgames = getAllGames();
+              foreach ($allgames as $game) {
+              ?>
+                <option value="<?= $game->name ?>"><?= $game->name ?></option>
+              <?php
+              }
+              ?>
+            </select>
           </div>
-          <div class="form-group">
-            <label for="inputGenre">Genre</label>
-            <input type="text" class="form-control" name="inputGenre" placeholder="Masukkan Genre">
-          </div>
-          <button name="buttonadd" type="submit" class="btn btn-primary">Add</button>
+          <button name="buttonaddfavgame" type="submit" class="btn btn-primary">Add</button>
         </form>
       </div>
     </div>
