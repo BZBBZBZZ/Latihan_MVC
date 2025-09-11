@@ -55,7 +55,7 @@
             <?php
             $counter = 0;
             $allmembers = getAllMahasiswa();
-            foreach ($allmembers as $index => $member) {
+            foreach ($allmembers as $member) {
               $counter++;
             ?>
 
@@ -65,8 +65,8 @@
                 <td><?php echo $member->age; ?></td>
                 <td><?php echo $member->major; ?></td>
                 <td>
-                  <a href="../view/view_editmahasiswa.php?editID=<?= $index ?>" class="btn btn-warning">Edit</a>
-                  <a href="../controller/controller_mahasiswa.php?deleteID=<?= $index ?>" class="btn btn-danger">Delete</a>
+                  <a href="../view/view_editmahasiswa.php?editID=<?= $member->id ?>" class="btn btn-warning">Edit</a>
+                  <a href="../controller/controller_mahasiswa.php?deleteID=<?= $member->id ?>" class="btn btn-danger">Delete</a>
                 </td>
               </tr>
 

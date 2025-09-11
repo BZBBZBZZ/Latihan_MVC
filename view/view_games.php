@@ -55,7 +55,7 @@
             <?php
             $counter = 0;
             $allgames = getAllGames();
-            foreach ($allgames as $index => $game) {
+            foreach ($allgames as $game) {
               $counter++;
             ?>
 
@@ -65,8 +65,8 @@
                 <td><?php echo $game->publisher; ?></td>
                 <td><?php echo $game->genre; ?></td>
                 <td>
-                  <a href="../view/view_editgames.php?editID=<?= $index ?>" class="btn btn-warning">Edit</a>
-                  <a href="../controller/controller_games.php?deleteID=<?= $index ?>" class="btn btn-danger">Delete</a>
+                  <a href="../view/view_editgames.php?editID=<?= $game->id ?>" class="btn btn-warning">Edit</a>
+                  <a href="../controller/controller_games.php?deleteID=<?= $game->id ?>" class="btn btn-danger">Delete</a>
                 </td>
               </tr>
 

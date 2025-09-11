@@ -1,8 +1,8 @@
 <?php
 require("../controller/controller_mahasiswa.php");
 if (isset($_GET["editID"])) {
-  $mahasiswa_id = $_GET["editID"];
-  $mahasiswa = getMahasiswaFavoriteGameWithID($mahasiswa_id);
+  $favorite_id = $_GET["editID"];
+  $favorite = getMahasiswaFavoriteGameWithID($favorite_id);
 }
 ?>
 
@@ -55,15 +55,15 @@ if (isset($_GET["editID"])) {
 
         <form method="POST" action="../controller/controller_mahasiswa.php">
           <div class="form-group">
-            <label for="inputNama">Nama Mahasiswa</label>
-            <select class="form-control" name="inputNama" required>
+            <label for="inputMahasiswa">Nama Mahasiswa</label>
+            <select class="form-control" name="inputMahasiswa" required>
               <option value="">Pilih Mahasiswa</option>
               <?php
               $allmahasiswa = getAllMahasiswaForDropdown();
               foreach ($allmahasiswa as $mhs) {
-                $selected = ($mhs->name == $mahasiswa->name) ? 'selected' : '';
+                $selected = ($mhs->name == $favorite->name) ? 'selected' : '';
               ?>
-                <option value="<?= $mhs->name ?>" <?= $selected ?>><?= $mhs->name ?></option>
+                <option value="<?= $mhs->id ?>" <?= $selected ?>><?= $mhs->name ?></option>
               <?php
               }
               ?>
@@ -76,15 +76,15 @@ if (isset($_GET["editID"])) {
               <?php
               $allgames = getAllGames();
               foreach ($allgames as $game) {
-                $selected = ($game->name == $mahasiswa->game_name) ? 'selected' : '';
+                $selected = ($game->name == $favorite->game_name) ? 'selected' : '';
               ?>
-                <option value="<?= $game->name ?>" <?= $selected ?>><?= $game->name ?></option>
+                <option value="<?= $game->id ?>" <?= $selected ?>><?= $game->name ?></option>
               <?php
               }
               ?>
             </select>
           </div>
-          <input type="hidden" name="input_id" value="<?= $mahasiswa_id ?>">
+          <input type="hidden" name="input_id" value="<?= $favorite_id ?>">
           <button name="buttoneditfavgame" type="submit" class="btn btn-primary">Edit</button>
         </form>
       </div>

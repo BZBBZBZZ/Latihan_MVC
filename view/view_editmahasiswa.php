@@ -1,8 +1,14 @@
 <?php
 require("../controller/controller_mahasiswa.php");
-if (isset($_GET["editID"]))
+if (isset($_GET["editID"])) {
   $mahasiswa_id = $_GET["editID"];
-$mahasiswa = getMahasiswaWithID($mahasiswa_id);
+  $mahasiswa = getMahasiswaWithID($mahasiswa_id);
+  
+  if (!$mahasiswa) {
+    header("Location: ../view/view_mahasiswa.php");
+    exit();
+  }
+}
 ?>
 
 <!DOCTYPE html>

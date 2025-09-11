@@ -1,42 +1,72 @@
 <?php
+// filepath: controller/controller_games.php
 include("../model/model_games.php");
+include("../config/database.php");
 session_start();
-
-if (!isset($_SESSION['gameslist'])) {
-    $_SESSION['gameslist'] = array();
-}
 
 function createGames()
 {
-    $games = new model_games();
-    $games->name = $_POST['inputNama'];
-    $games->publisher = $_POST['inputPublisher'];
-    $games->genre = $_POST['inputGenre'];
-    array_push($_SESSION['gameslist'], $games);
+    global $conn;
+    $nama = $_POST['inputNama'];
+    $publisher = $_POST['inputPublisher'];
+    $genre = $_POST['inputGenre'];
+    
+    $sql = "INSERT INTO games (name, publisher, genre) VALUES ('$nama', '$publisher', '$genre')";
+    mysqli_query($conn, $sql);
 }
 
 function updateGames($gamesID)
 {
-    $games = $_SESSION['gameslist'][$gamesID]; 
-    $games->name = $_POST['inputNama'];
-    $games->publisher = $_POST['inputPublisher'];
-    $games->genre = $_POST['inputGenre'];
+    global $conn;
+    $nama = $_POST['inputNama'];
+    $publisher = $_POST['inputPublisher'];
+    $genre = $_POST['inputGenre'];
+    
+    $sql = "UPDATE games SET name='$nama', publisher='$publisher', genre='$genre' WHERE id=$gamesID";
+    mysqli_query($conn, $sql);
 }
 
 function getAllGames()
 {
-    return $_SESSION['gameslist'];
+    global $conn;
+    $sql = "SELECT * FROM games";
+    $result = mysqli_query($conn, $sql);
+    $games = [];
+    
+    while ($row = mysqli_fetch_assoc($result)) {
+        $game = new model_games();
+        $game->id = $row['id'];
+        $game->name = $row['name'];
+        $game->publisher = $row['publisher'];
+        $game->genre = $row['genre'];
+        $games[] = $game;
+    }
+    return $games;
 }
 
-function deleteGames($gamesIndex)
+function deleteGames($gamesID)
 {
-    unset($_SESSION['gameslist'][$gamesIndex]);
-    $_SESSION['gameslist'] = array_values($_SESSION['gameslist']);
+    global $conn;
+    $sql = "DELETE FROM games WHERE id=$gamesID";
+    mysqli_query($conn, $sql);
 }
 
 function getGamesWithID($gamesID)
 {
-    return $_SESSION['gameslist'][$gamesID];
+    global $conn;
+    $sql = "SELECT * FROM games WHERE id=$gamesID";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    
+    if ($row) {
+        $game = new model_games();
+        $game->id = $row['id'];
+        $game->name = $row['name'];
+        $game->publisher = $row['publisher'];
+        $game->genre = $row['genre'];
+        return $game;
+    }
+    return null;
 }
 
 if (isset($_POST['buttonadd'])) {

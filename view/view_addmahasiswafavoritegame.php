@@ -49,14 +49,14 @@
 
         <form method="POST" action="../controller/controller_mahasiswa.php">
           <div class="form-group">
-            <label for="inputNama">Nama Mahasiswa</label>
-            <select class="form-control" name="inputNama" required>
+            <label for="inputMahasiswa">Nama Mahasiswa</label>
+            <select class="form-control" name="inputMahasiswa" required>
               <option value="">Pilih Mahasiswa</option>
               <?php
               $allmahasiswa = getAllMahasiswaForDropdown();
               foreach ($allmahasiswa as $mahasiswa) {
               ?>
-                <option value="<?= $mahasiswa->name ?>"><?= $mahasiswa->name ?></option>
+                <option value="<?= $mahasiswa->id ?>"><?= $mahasiswa->name ?></option>
               <?php
               }
               ?>
@@ -70,7 +70,7 @@
               $allgames = getAllGames();
               foreach ($allgames as $game) {
               ?>
-                <option value="<?= $game->name ?>"><?= $game->name ?></option>
+                <option value="<?= $game->id ?>"><?= $game->name ?></option>
               <?php
               }
               ?>

@@ -54,7 +54,7 @@
                         <?php
                         $counter = 0;
                         $allmembers = getAllMahasiswaFavoriteGame();
-                        foreach ($allmembers as $index => $member) {
+                        foreach ($allmembers as $member) {
                             $counter++;
                         ?>
 
@@ -63,8 +63,8 @@
                                 <td><?php echo $member->name; ?></td>
                                 <td><?php echo $member->game_name; ?></td>
                                 <td>
-                                    <a href="../view/view_editmahasiswafavoritegame.php?editID=<?= $index ?>" class="btn btn-warning">Edit</a>
-                                    <a href="../controller/controller_mahasiswa.php?deleteFavGameID=<?= $index ?>" class="btn btn-danger">Delete</a>
+                                    <a href="../view/view_editmahasiswafavoritegame.php?editID=<?= $member->id ?>" class="btn btn-warning">Edit</a>
+                                    <a href="../controller/controller_mahasiswa.php?deleteFavGameID=<?= $member->id ?>" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
 
