@@ -1,5 +1,4 @@
 <?php
-// filepath: controller/controller_mahasiswa.php
 include("../model/model_mahasiswa.php");
 include("../model/model_games.php");
 include("../config/database.php");
@@ -242,7 +241,6 @@ function getMahasiswaFavoriteGameWithID($favoriteGameID)
     return null;
 }
 
-// Handle form submissions
 if (isset($_POST['buttonaddfavgame'])) {
     if (createMahasiswaFavoriteGame()) {
         header("Location: ../view/view_mahasiswafavoritegame.php");

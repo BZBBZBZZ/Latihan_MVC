@@ -1,5 +1,4 @@
 <?php
-// filepath: controller/controller_games.php
 include("../model/model_games.php");
 include("../config/database.php");
 session_start();
