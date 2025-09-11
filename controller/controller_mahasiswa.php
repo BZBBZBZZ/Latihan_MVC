@@ -3,7 +3,6 @@ include("../model/model_mahasiswa.php");
 include("../model/model_games.php");
 session_start();
 
-// Inisialisasi session array di awal
 if (!isset($_SESSION['mahasiswalist'])) {
     $_SESSION['mahasiswalist'] = array();
 }
@@ -16,19 +15,16 @@ if (!isset($_SESSION['gameslist'])) {
     $_SESSION['gameslist'] = array();
 }
 
-// Function untuk mendapatkan semua games (untuk dropdown)
 function getAllGames()
 {
     return $_SESSION['gameslist'];
 }
 
-// Function untuk mendapatkan semua mahasiswa (untuk dropdown nama)
 function getAllMahasiswaForDropdown()
 {
     return $_SESSION['mahasiswalist'];
 }
 
-// Function untuk validasi apakah game ada di daftar games
 function validateGameExists($gameName)
 {
     if (empty($gameName)) {
@@ -43,7 +39,6 @@ function validateGameExists($gameName)
     return false;
 }
 
-// Function untuk validasi apakah mahasiswa ada di daftar mahasiswa
 function validateMahasiswaExists($mahasiswaName)
 {
     if (empty($mahasiswaName)) {
@@ -58,20 +53,18 @@ function validateMahasiswaExists($mahasiswaName)
     return false;
 }
 
-// Function untuk mencegah duplicate relasi mahasiswa-game
 function checkDuplicateFavoriteGame($mahasiswaName, $gameName, $excludeIndex = null)
 {
     foreach ($_SESSION['mahasiswafavoritegamelist'] as $index => $favGame) {
-        // Skip index yang sedang diedit
         if ($excludeIndex !== null && $index == $excludeIndex) {
             continue;
         }
 
         if ($favGame->name === $mahasiswaName && $favGame->game_name === $gameName) {
-            return true; // Duplicate found
+            return true; 
         }
     }
-    return false; // No duplicate
+    return false;
 }
 
 function createMahasiswa()
@@ -85,19 +78,16 @@ function createMahasiswa()
 
 function createMahasiswaFavoriteGame()
 {
-    // Validasi mahasiswa exists
     if (!validateMahasiswaExists($_POST['inputNama'])) {
         $_SESSION['error'] = "Mahasiswa yang dipilih tidak valid atau tidak ada dalam daftar mahasiswa!";
         return false;
     }
 
-    // Validasi game exists
     if (!validateGameExists($_POST['inputGame'])) {
         $_SESSION['error'] = "Game yang dipilih tidak valid atau tidak ada dalam daftar games!";
         return false;
     }
 
-    // Validasi duplicate
     if (checkDuplicateFavoriteGame($_POST['inputNama'], $_POST['inputGame'])) {
         $_SESSION['error'] = "Mahasiswa " . $_POST['inputNama'] . " sudah memiliki game favorit " . $_POST['inputGame'] . "!";
         return false;
@@ -120,19 +110,16 @@ function updateMahasiswa($mahasiswaID)
 
 function updateMahasiswaFavoriteGame($mahasiswaID)
 {
-    // Validasi mahasiswa exists
     if (!validateMahasiswaExists($_POST['inputNama'])) {
         $_SESSION['error'] = "Mahasiswa yang dipilih tidak valid atau tidak ada dalam daftar mahasiswa!";
         return false;
     }
 
-    // Validasi game exists
     if (!validateGameExists($_POST['inputGame'])) {
         $_SESSION['error'] = "Game yang dipilih tidak valid atau tidak ada dalam daftar games!";
         return false;
     }
 
-    // Validasi duplicate (exclude current record)
     if (checkDuplicateFavoriteGame($_POST['inputNama'], $_POST['inputGame'], $mahasiswaID)) {
         $_SESSION['error'] = "Mahasiswa " . $_POST['inputNama'] . " sudah memiliki game favorit " . $_POST['inputGame'] . "!";
         return false;
@@ -176,7 +163,6 @@ function getMahasiswaFavoriteGameWithID($mahasiswaID)
     return $_SESSION['mahasiswafavoritegamelist'][$mahasiswaID];
 }
 
-// Handle mahasiswa favorite game actions
 if (isset($_POST['buttonaddfavgame'])) {
     if (createMahasiswaFavoriteGame()) {
         header("Location: ../view/view_mahasiswafavoritegame.php");
@@ -203,7 +189,6 @@ if (isset($_GET['deleteFavGameID'])) {
     exit();
 }
 
-// Handle regular mahasiswa actions
 if (isset($_POST['buttonadd'])) {
     createMahasiswa();
     header("Location: ../view/view_mahasiswa.php");

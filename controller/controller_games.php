@@ -2,7 +2,6 @@
 include("../model/model_games.php");
 session_start();
 
-// Inisialisasi session array di awal
 if (!isset($_SESSION['gameslist'])) {
     $_SESSION['gameslist'] = array();
 }
@@ -18,7 +17,7 @@ function createGames()
 
 function updateGames($gamesID)
 {
-    $games = $_SESSION['gameslist'][$gamesID]; // ambil data dengan index tertentu
+    $games = $_SESSION['gameslist'][$gamesID]; 
     $games->name = $_POST['inputNama'];
     $games->publisher = $_POST['inputPublisher'];
     $games->genre = $_POST['inputGenre'];
@@ -32,7 +31,6 @@ function getAllGames()
 function deleteGames($gamesIndex)
 {
     unset($_SESSION['gameslist'][$gamesIndex]);
-    // Re-index array setelah delete
     $_SESSION['gameslist'] = array_values($_SESSION['gameslist']);
 }
 
