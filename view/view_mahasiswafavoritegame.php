@@ -64,7 +64,7 @@
                                 <td><?php echo $member->game_name; ?></td>
                                 <td>
                                     <a href="../view/view_editmahasiswafavoritegame.php?editID=<?= $member->id ?>" class="btn btn-warning">Edit</a>
-                                    <a href="../controller/controller_mahasiswafavoritegame.php?deleteFavGameID=<?= $member->id ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this favorite game?')">Delete</a>
+                                    <a href="../controller/controller_mahasiswafavoritegame.php?deleteFavGameID=<?= $member->id ?>" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
 

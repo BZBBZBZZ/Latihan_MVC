@@ -68,7 +68,6 @@ function getMahasiswaWithID($mahasiswaID)
     return null;
 }
 
-// Handle POST requests
 if (isset($_POST['buttonadd'])) {
     createMahasiswa();
     header("Location: ../view/view_mahasiswa.php");

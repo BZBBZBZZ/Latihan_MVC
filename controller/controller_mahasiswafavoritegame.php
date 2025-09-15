@@ -139,7 +139,7 @@ function getAllMahasiswaFavoriteGame()
     $favorites = [];
     
     while ($row = mysqli_fetch_assoc($result)) {
-        $favorite = new model_mahasiswafavoritegame(); // Menggunakan model yang tepat
+        $favorite = new model_mahasiswafavoritegame(); 
         $favorite->id = $row['id'];
         $favorite->mahasiswa_id = $row['mahasiswa_id'];
         $favorite->game_id = $row['game_id'];
@@ -169,7 +169,7 @@ function getMahasiswaFavoriteGameWithID($favoriteGameID)
     $row = mysqli_fetch_assoc($result);
     
     if ($row) {
-        $favorite = new model_mahasiswafavoritegame(); // Menggunakan model yang tepat
+        $favorite = new model_mahasiswafavoritegame(); 
         $favorite->id = $row['id'];
         $favorite->mahasiswa_id = $row['mahasiswa_id'];
         $favorite->game_id = $row['game_id'];
@@ -180,7 +180,6 @@ function getMahasiswaFavoriteGameWithID($favoriteGameID)
     return null;
 }
 
-// Handle POST requests
 if (isset($_POST['buttonaddfavgame'])) {
     if (createMahasiswaFavoriteGame()) {
         header("Location: ../view/view_mahasiswafavoritegame.php");
