@@ -1,5 +1,5 @@
 <?php
-require("../controller/controller_mahasiswa.php");
+require("../controller/controller_mahasiswafavoritegame.php");
 if (isset($_GET["editID"])) {
   $favorite_id = $_GET["editID"];
   $favorite = getMahasiswaFavoriteGameWithID($favorite_id);
@@ -23,22 +23,22 @@ if (isset($_GET["editID"])) {
       <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
           <li class="nav-item">
-            <a class="nav-link active" href="view_mahasiswa.php">Mahasiswa</a>
+            <a class="nav-link" href="view_mahasiswa.php">Mahasiswa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="view_addmahasiswa.php">New Mahasiswa</a>
+            <a class="nav-link" href="view_addmahasiswa.php">New Mahasiswa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="view_games.php">Games</a>
+            <a class="nav-link" href="view_games.php">Games</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="view_addgames.php">New Games</a>
+            <a class="nav-link" href="view_addgames.php">New Games</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="view_mahasiswafavoritegame.php">Mahasiswa Favorite Game</a>
+            <a class="nav-link" href="view_mahasiswafavoritegame.php">Mahasiswa Favorite Game</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="view_addmahasiswafavoritegame.php">New Mahasiswa Favorite Game</a>
+            <a class="nav-link " href="view_addmahasiswafavoritegame.php">Edit Mahasiswa Favorite Game</a>
           </li>
         </ul>
       </div>
@@ -53,7 +53,7 @@ if (isset($_GET["editID"])) {
           <?php unset($_SESSION['error']); ?>
         <?php endif; ?>
 
-        <form method="POST" action="../controller/controller_mahasiswa.php">
+        <form method="POST" action="../controller/controller_mahasiswafavoritegame.php">
           <div class="form-group">
             <label for="inputMahasiswa">Nama Mahasiswa</label>
             <select class="form-control" name="inputMahasiswa" required>
@@ -61,7 +61,7 @@ if (isset($_GET["editID"])) {
               <?php
               $allmahasiswa = getAllMahasiswaForDropdown();
               foreach ($allmahasiswa as $mhs) {
-                $selected = ($mhs->name == $favorite->name) ? 'selected' : '';
+                $selected = ($mhs->id == $favorite->mahasiswa_id) ? 'selected' : ''; 
               ?>
                 <option value="<?= $mhs->id ?>" <?= $selected ?>><?= $mhs->name ?></option>
               <?php
@@ -76,7 +76,7 @@ if (isset($_GET["editID"])) {
               <?php
               $allgames = getAllGames();
               foreach ($allgames as $game) {
-                $selected = ($game->name == $favorite->game_name) ? 'selected' : '';
+                $selected = ($game->id == $favorite->game_id) ? 'selected' : ''; 
               ?>
                 <option value="<?= $game->id ?>" <?= $selected ?>><?= $game->name ?></option>
               <?php
@@ -85,7 +85,8 @@ if (isset($_GET["editID"])) {
             </select>
           </div>
           <input type="hidden" name="input_id" value="<?= $favorite_id ?>">
-          <button name="buttoneditfavgame" type="submit" class="btn btn-primary">Edit</button>
+          <button name="buttoneditfavgame" type="submit" class="btn btn-primary">Update</button>
+          <a href="view_mahasiswafavoritegame.php" class="btn btn-secondary">Cancel</a>
         </form>
       </div>
     </div>

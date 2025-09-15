@@ -23,22 +23,22 @@ if (isset($_GET["editID"])) {
       <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
           <li class="nav-item">
-            <a class="nav-link active" href="view_mahasiswa.php">Mahasiswa</a>
+            <a class="nav-link " href="view_mahasiswa.php">Mahasiswa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="view_addmahasiswa.php">New Mahasiswa</a>
+            <a class="nav-link " href="view_addmahasiswa.php">New Mahasiswa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="view_games.php">Games</a>
+            <a class="nav-link " href="view_games.php">Games</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="view_addgames.php">New Games</a>
+            <a class="nav-link " href="view_addgames.php">New Games</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="view_mahasiswafavoritegame.php">Mahasiswa Favorite Game</a>
+            <a class="nav-link " href="view_mahasiswafavoritegame.php">Mahasiswa Favorite Game</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="view_addmahasiswafavoritegame.php">New Mahasiswa Favorite Game</a>
+            <a class="nav-link " href="view_addmahasiswafavoritegame.php">New Mahasiswa Favorite Game</a>
           </li>
         </ul>
       </div>

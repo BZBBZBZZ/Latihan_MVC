@@ -1,4 +1,4 @@
-<?php require("../controller/controller_mahasiswa.php"); ?>
+<?php require("../controller/controller_mahasiswafavoritegame.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,19 +17,19 @@
       <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
           <li class="nav-item">
-            <a class="nav-link active" href="view_mahasiswa.php">Mahasiswa</a>
+            <a class="nav-link" href="view_mahasiswa.php">Mahasiswa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="view_addmahasiswa.php">New Mahasiswa</a>
+            <a class="nav-link" href="view_addmahasiswa.php">New Mahasiswa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="view_games.php">Games</a>
+            <a class="nav-link" href="view_games.php">Games</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="view_addgames.php">New Games</a>
+            <a class="nav-link" href="view_addgames.php">New Games</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="view_mahasiswafavoritegame.php">Mahasiswa Favorite Game</a>
+            <a class="nav-link" href="view_mahasiswafavoritegame.php">Mahasiswa Favorite Game</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="view_addmahasiswafavoritegame.php">New Mahasiswa Favorite Game</a>
@@ -47,7 +47,7 @@
           <?php unset($_SESSION['error']); ?>
         <?php endif; ?>
 
-        <form method="POST" action="../controller/controller_mahasiswa.php">
+        <form method="POST" action="../controller/controller_mahasiswafavoritegame.php">
           <div class="form-group">
             <label for="inputMahasiswa">Nama Mahasiswa</label>
             <select class="form-control" name="inputMahasiswa" required>
@@ -77,6 +77,7 @@
             </select>
           </div>
           <button name="buttonaddfavgame" type="submit" class="btn btn-primary">Add</button>
+          <a href="view_mahasiswafavoritegame.php" class="btn btn-secondary">Cancel</a>
         </form>
       </div>
     </div>

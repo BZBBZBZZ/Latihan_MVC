@@ -1,4 +1,4 @@
-<?php require("../controller/controller_mahasiswa.php"); ?>
+<?php require("../controller/controller_mahasiswafavoritegame.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,22 +18,22 @@
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="view_mahasiswa.php">Mahasiswa</a>
+                        <a class="nav-link" href="view_mahasiswa.php">Mahasiswa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="view_addmahasiswa.php">New Mahasiswa</a>
+                        <a class="nav-link" href="view_addmahasiswa.php">New Mahasiswa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="view_games.php">Games</a>
+                        <a class="nav-link" href="view_games.php">Games</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="view_addgames.php">New Games</a>
+                        <a class="nav-link" href="view_addgames.php">New Games</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="view_mahasiswafavoritegame.php">Mahasiswa Favorite Game</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="view_addmahasiswafavoritegame.php">New Mahasiswa Favorite Game</a>
+                        <a class="nav-link" href="view_addmahasiswafavoritegame.php">New Mahasiswa Favorite Game</a>
                     </li>
                 </ul>
             </div>
@@ -60,11 +60,11 @@
 
                             <tr>
                                 <th scope="row"><?= $counter ?></th>
-                                <td><?php echo $member->name; ?></td>
+                                <td><?php echo $member->mahasiswa_name; ?></td>
                                 <td><?php echo $member->game_name; ?></td>
                                 <td>
                                     <a href="../view/view_editmahasiswafavoritegame.php?editID=<?= $member->id ?>" class="btn btn-warning">Edit</a>
-                                    <a href="../controller/controller_mahasiswa.php?deleteFavGameID=<?= $member->id ?>" class="btn btn-danger">Delete</a>
+                                    <a href="../controller/controller_mahasiswafavoritegame.php?deleteFavGameID=<?= $member->id ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this favorite game?')">Delete</a>
                                 </td>
                             </tr>
 
