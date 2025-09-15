@@ -6,42 +6,6 @@ include("../model/model_games.php");
 include("../config/database.php");
 session_start();
 
-function getAllGames()
-{
-    global $conn;
-    $sql = "SELECT * FROM games";
-    $result = mysqli_query($conn, $sql);
-    $games = [];
-    
-    while ($row = mysqli_fetch_assoc($result)) {
-        $game = new model_games();
-        $game->id = $row['id'];
-        $game->name = $row['name'];
-        $game->publisher = $row['publisher'];
-        $game->genre = $row['genre'];
-        $games[] = $game;
-    }
-    return $games;
-}
-
-function getAllMahasiswaForDropdown()
-{
-    global $conn;
-    $sql = "SELECT * FROM mahasiswa";
-    $result = mysqli_query($conn, $sql);
-    $mahasiswa = [];
-    
-    while ($row = mysqli_fetch_assoc($result)) {
-        $mhs = new model_mahasiswa();
-        $mhs->id = $row['id'];
-        $mhs->name = $row['name'];
-        $mhs->age = $row['age'];
-        $mhs->major = $row['major'];
-        $mahasiswa[] = $mhs;
-    }
-    return $mahasiswa;
-}
-
 function validateGameExists($gameId)
 {
     global $conn;
@@ -93,10 +57,11 @@ function createMahasiswaFavoriteGame()
         return false;
     }
 
-    $mahasiswaId = $_POST['inputMahasiswa'];
-    $gameId = $_POST['inputGame'];
+    $favoriteGame = new model_mahasiswafavoritegame();
+    $favoriteGame->mahasiswa_id = $_POST['inputMahasiswa'];
+    $favoriteGame->game_id = $_POST['inputGame'];
     
-    $sql = "INSERT INTO mahasiswa_favorite_game (mahasiswa_id, game_id) VALUES ('$mahasiswaId', '$gameId')";
+    $sql = "INSERT INTO mahasiswa_favorite_game (mahasiswa_id, game_id) VALUES ('$favoriteGame->mahasiswa_id', '$favoriteGame->game_id')";
     mysqli_query($conn, $sql);
     return true;
 }
@@ -120,12 +85,57 @@ function updateMahasiswaFavoriteGame($favoriteGameID)
         return false;
     }
 
-    $mahasiswaId = $_POST['inputMahasiswa'];
-    $gameId = $_POST['inputGame'];
+    $favoriteGame = getMahasiswaFavoriteGameWithID($favoriteGameID);
     
-    $sql = "UPDATE mahasiswa_favorite_game SET mahasiswa_id='$mahasiswaId', game_id='$gameId' WHERE id=$favoriteGameID";
+    $favoriteGame->mahasiswa_id = $_POST['inputMahasiswa'];
+    $favoriteGame->game_id = $_POST['inputGame'];
+    
+    $sql = "UPDATE mahasiswa_favorite_game SET mahasiswa_id='$favoriteGame->mahasiswa_id', game_id='$favoriteGame->game_id' WHERE id=$favoriteGameID";
     mysqli_query($conn, $sql);
     return true;
+}
+
+function deleteMahasiswaFavoriteGame($favoriteGameID)
+{
+    global $conn;
+    $sql = "DELETE FROM mahasiswa_favorite_game WHERE id=$favoriteGameID";
+    mysqli_query($conn, $sql);
+}
+
+function getAllGames()
+{
+    global $conn;
+    $sql = "SELECT * FROM games";
+    $result = mysqli_query($conn, $sql);
+    $games = [];
+    
+    while ($row = mysqli_fetch_assoc($result)) {
+        $game = new model_games();
+        $game->id = $row['id'];
+        $game->name = $row['name'];
+        $game->publisher = $row['publisher'];
+        $game->genre = $row['genre'];
+        $games[] = $game;
+    }
+    return $games;
+}
+
+function getAllMahasiswaForDropdown()
+{
+    global $conn;
+    $sql = "SELECT * FROM mahasiswa";
+    $result = mysqli_query($conn, $sql);
+    $mahasiswa = [];
+    
+    while ($row = mysqli_fetch_assoc($result)) {
+        $mhs = new model_mahasiswa();
+        $mhs->id = $row['id'];
+        $mhs->name = $row['name'];
+        $mhs->age = $row['age'];
+        $mhs->major = $row['major'];
+        $mahasiswa[] = $mhs;
+    }
+    return $mahasiswa;
 }
 
 function getAllMahasiswaFavoriteGame()
@@ -148,13 +158,6 @@ function getAllMahasiswaFavoriteGame()
         $favorites[] = $favorite;
     }
     return $favorites;
-}
-
-function deleteMahasiswaFavoriteGame($favoriteGameID)
-{
-    global $conn;
-    $sql = "DELETE FROM mahasiswa_favorite_game WHERE id=$favoriteGameID";
-    mysqli_query($conn, $sql);
 }
 
 function getMahasiswaFavoriteGameWithID($favoriteGameID)

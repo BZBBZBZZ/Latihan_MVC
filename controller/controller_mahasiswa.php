@@ -6,22 +6,27 @@ session_start();
 function createMahasiswa()
 {
     global $conn;
-    $nama = $_POST['inputNama'];
-    $usia = $_POST['inputUsia'];
-    $jurusan = $_POST['inputJurusan'];
     
-    $sql = "INSERT INTO mahasiswa (name, age, major) VALUES ('$nama', '$usia', '$jurusan')";
+    $mahasiswa = new model_mahasiswa();
+    $mahasiswa->name = $_POST['inputNama'];
+    $mahasiswa->age = $_POST['inputUsia'];
+    $mahasiswa->major = $_POST['inputJurusan'];
+    
+    $sql = "INSERT INTO mahasiswa (name, age, major) VALUES ('$mahasiswa->name', '$mahasiswa->age', '$mahasiswa->major')";
     mysqli_query($conn, $sql);
 }
 
 function updateMahasiswa($mahasiswaID)
 {
     global $conn;
-    $nama = $_POST['inputNama'];
-    $usia = $_POST['inputUsia'];
-    $jurusan = $_POST['inputJurusan'];
     
-    $sql = "UPDATE mahasiswa SET name='$nama', age='$usia', major='$jurusan' WHERE id=$mahasiswaID";
+    $mahasiswa = getMahasiswaWithID($mahasiswaID);
+    
+    $mahasiswa->name = $_POST['inputNama'];
+    $mahasiswa->age = $_POST['inputUsia'];
+    $mahasiswa->major = $_POST['inputJurusan'];
+    
+    $sql = "UPDATE mahasiswa SET name='$mahasiswa->name', age='$mahasiswa->age', major='$mahasiswa->major' WHERE id=$mahasiswaID";
     mysqli_query($conn, $sql);
 }
 

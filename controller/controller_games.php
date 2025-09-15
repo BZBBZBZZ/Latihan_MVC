@@ -6,22 +6,27 @@ session_start();
 function createGames()
 {
     global $conn;
-    $nama = $_POST['inputNama'];
-    $publisher = $_POST['inputPublisher'];
-    $genre = $_POST['inputGenre'];
     
-    $sql = "INSERT INTO games (name, publisher, genre) VALUES ('$nama', '$publisher', '$genre')";
+    $game = new model_games();
+    $game->name = $_POST['inputNama'];
+    $game->publisher = $_POST['inputPublisher'];
+    $game->genre = $_POST['inputGenre'];
+    
+    $sql = "INSERT INTO games (name, publisher, genre) VALUES ('$game->name', '$game->publisher', '$game->genre')";
     mysqli_query($conn, $sql);
 }
 
 function updateGames($gamesID)
 {
     global $conn;
-    $nama = $_POST['inputNama'];
-    $publisher = $_POST['inputPublisher'];
-    $genre = $_POST['inputGenre'];
     
-    $sql = "UPDATE games SET name='$nama', publisher='$publisher', genre='$genre' WHERE id=$gamesID";
+    $game = getGamesWithID($gamesID);
+    
+    $game->name = $_POST['inputNama'];
+    $game->publisher = $_POST['inputPublisher'];
+    $game->genre = $_POST['inputGenre'];
+    
+    $sql = "UPDATE games SET name='$game->name', publisher='$game->publisher', genre='$game->genre' WHERE id=$gamesID";
     mysqli_query($conn, $sql);
 }
 
